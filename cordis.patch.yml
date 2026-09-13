@@ -1,0 +1,18 @@
+# The dsh-use bundle patch.
+#
+# A bundle patch is a top-level YAML array of loader patch entries. It is applied
+# after the layers that come before this bundle (dsh-base, dsh-web-app) and before
+# the profile's own cordis.patch.yml.
+#
+# Entry forms:
+#   - id: <row-id>            # replace that row's whole `config` (restate every key)
+#     config: { ... }
+#   - insert: [ {id, name, config?}, ... ]   # add new rows
+#   - disable: <row-id>       # turn an existing row off
+#
+# `name` is a module specifier resolved from the profile's node_modules, so a bare
+# package name resolves to that package's main export.
+
+- insert:
+    - id: dsh-use
+      name: 'dsh-use'
